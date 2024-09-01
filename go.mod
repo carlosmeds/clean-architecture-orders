@@ -1,6 +1,6 @@
 module github.com/carlosmeds/clean-architecture-go
 
-go 1.19
+go 1.22
 
 require (
 	github.com/99designs/gqlgen v0.17.49

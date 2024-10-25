@@ -36,11 +36,21 @@ Portas dos Serviços
 
 
 ## Como Rodar
+
+Execute os comandos a seguir
+
+```sh
+cd cmd/ordersystem
+go run main.go wire_gen.go
+```
+
 ### HTTP
 Para testar as APIs HTTP, você pode utilizar os arquivos .http na pasta `api/`. Para listar os pedidos, utilize o arquivo `list_orders.http`.
 
 ### GraphQL
-Para testar as APIs GraphQL, você pode utilizar o playground GraphQL. No playground, você pode executar queries e mutations. Para listar os pedidos:
+Para testar as APIs GraphQL, você pode utilizar o playground GraphQL. No playground, você pode executar queries e mutations. 
+
+Para listar os pedidos:
 
 ```
 query orders {
@@ -53,9 +63,30 @@ query orders {
 }
 ```
 
+Para criar novos pedidos:
+
+```
+mutation {
+  createOrder(input: {id: "abc", Price: 100.5, Tax: 0.5}) {
+    id
+    Price
+    Tax
+    FinalPrice
+  }
+}
+```
+
 ### gRPC
-Para testar as APIs gRPC, você pode utilizar o Evans. Primeiro, inicie o Evans no modo REPL. Dentro do REPL do Evans, você pode chamar os métodos gRPC. Para listar os pedidos:
+Para testar as APIs gRPC, você pode utilizar o Evans. Primeiro, inicie o Evans no modo REPL. Dentro do REPL do Evans, você pode chamar os métodos gRPC. 
+
+Para listar os pedidos:
 
 ```
 call ListOrders
+```
+
+Para criar novos pedidos:
+
+```
+call CreateOrder
 ```

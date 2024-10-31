@@ -10,42 +10,26 @@ Este projeto implementa um sistema de pedidos utilizando uma arquitetura limpa. 
 - Configuração
 - Subir os Serviços com Docker Compose
 
-Para subir os serviços necessários (MySQL e RabbitMQ) utilizando o Docker Compose, execute o seguinte comando:
+## Portas dos Serviços: 
 
-
-```sh
-make createdb
-```
-
-## Rodar as Migrações
-
-Para rodar as migrações e criar as tabelas necessárias no banco de dados, execute o seguinte comando:
-
-```sh
-make migrate
-```
-
-Isso irá aplicar as migrações definidas na pasta `internal/infra/database/migrations`.
-
-Portas dos Serviços
 - MySQL: 3306
 - RabbitMQ: 5672 (porta de comunicação) e 15672 (porta de gerenciamento)
 - Servidor HTTP: 8000
 - Servidor gRPC: 50051
 - Servidor GraphQL: 8080
 
+### Subir os Serviços com Docker Compose
 
-## Como Rodar
-
-Execute os comandos a seguir
+Para subir os serviços necessários (MySQL, RabbitMQ e a aplicação) utilizando o Docker Compose, execute o seguinte comando:
 
 ```sh
-cd cmd/ordersystem
-go run main.go wire_gen.go
+docker compose up --build -d
 ```
 
+## Como Testar
+
 ### HTTP
-Para testar as APIs HTTP, você pode utilizar os arquivos .http na pasta `api/`. Para listar os pedidos, utilize o arquivo `list_orders.http`.
+Para testar as APIs HTTP, você pode utilizar os arquivos .http na pasta `api`. Para listar os pedidos, utilize o arquivo `list_orders.http`. Para criar os pedidos, utilize o arquivo `create_order.http`.
 
 ### GraphQL
 Para testar as APIs GraphQL, você pode utilizar o playground GraphQL. No playground, você pode executar queries e mutations. 
